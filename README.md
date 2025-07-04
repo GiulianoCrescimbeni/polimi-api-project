@@ -68,3 +68,43 @@ t: 5
 ordine torta 1
 => accettato
 ```
+
+## Testing and Analysis Tools
+
+To ensure both correctness and efficiency, the following tools were used during development:
+
+### Memory Leak Detection
+
+- **Valgrind – Memcheck**  
+  Used to detect memory leaks, use-after-free errors, double-frees, and uninitialized memory reads.
+
+  ```bash
+  valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./main < input.txt
+  ```
+
+### Performance Profiling
+
+- **Valgrind – Callgrind
+  Used to profile function calls and identify performance bottlenecks.
+  ```bash
+  valgrind --tool=callgrind ./main < input.txt
+  kcachegrind callgrind.out.<pid>  # View call graph in GUI
+  ```
+
+- **Valgrind – Massif
+  Used to analyze dynamic memory usage over time.
+  ```bash
+  valgrind --tool=massif ./main < input.txt
+  massif-visualizer massif.out.<pid>  # View memory timeline in GUI
+  ```
+
+### Runtime Debugging
+
+- ***GDB and AddressSanitizer (ASAN)
+  Used to debug runtime errors and catch out-of-bounds memory accesses.
+  ```bash
+  gcc -g3 -fsanitize=address -o main main.c
+  ./main < input.txt
+  ```
+
+These tools helped ensure that the program is memory-safe, performant, and fully compliant with the testing framework provided by the PFAPI course.
