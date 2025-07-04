@@ -84,14 +84,14 @@ To ensure both correctness and efficiency, the following tools were used during 
 
 ### Performance Profiling
 
-- **Valgrind – Callgrind
+- **Valgrind – Callgrind**
   Used to profile function calls and identify performance bottlenecks.
   ```bash
   valgrind --tool=callgrind ./main < input.txt
   kcachegrind callgrind.out.<pid>  # View call graph in GUI
   ```
 
-- **Valgrind – Massif
+- **Valgrind – Massif**
   Used to analyze dynamic memory usage over time.
   ```bash
   valgrind --tool=massif ./main < input.txt
@@ -100,7 +100,7 @@ To ensure both correctness and efficiency, the following tools were used during 
 
 ### Runtime Debugging
 
-- ***GDB and AddressSanitizer (ASAN)
+- ***GDB and AddressSanitizer (ASAN)**
   Used to debug runtime errors and catch out-of-bounds memory accesses.
   ```bash
   gcc -g3 -fsanitize=address -o main main.c
